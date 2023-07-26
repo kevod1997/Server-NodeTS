@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   node_db:
-    image: mysql:5.7
+    image: mysql:latest
     volumes:
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
     command: --init-file /docker-entrypoint-initdb.d/init.sql
@@ -10,7 +10,7 @@ services:
       - "3312:3306"
     environment:
       MYSQL_DATABASE: node_db
-      MYSQL_ROOT_USER: node_db
+      MYSQL_ROOT_USER: node
+      MYSQL_USER: node
       MYSQL_ROOT_PASSWORD: secret
-      MYSQL_ROOT_HOST: "%"
       MYSQL_PASSWORD: secret
